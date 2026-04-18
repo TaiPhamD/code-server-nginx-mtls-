@@ -44,6 +44,20 @@ sudo chmod 600 /etc/code-server-certs/ca.key /etc/code-server-certs/server.key
 sudo chmod 644 /etc/code-server-certs/ca.crt /etc/code-server-certs/server.crt
 ```
 
+## Step 1.5: Configure Server IPs
+
+Open `code-server-nginx.conf` and replace the example IPs with your actual server IPs:
+
+```bash
+# Replace these with your actual IPs
+server_name 192.168.1.100 100.75.42.100;
+```
+
+- `192.168.1.100` — your server's local LAN IP
+- `100.75.42.100` — your Tailscale IP
+
+Only requests to these IPs will be accepted; all others are silently dropped (HTTP 444).
+
 ## Step 2: Install Nginx Config
 
 ```bash
